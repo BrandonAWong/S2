@@ -27,26 +27,36 @@ class ArrayStack(Stack, List):
         '''
             Resize the array
         '''
-        pass 
+        tempArray = self.new_array(max(1, 2 * self.size()))
+        for i in range(self.size()):
+            tempArray[i] = self.a[i]
+        self.a = tempArray
+        return tempArray 
 
     def get(self, i : int) -> object:
-        pass 
+        if i < 0 or i >= self.size():
+            raise IndexError()
+        return self.a[i] 
     
     def set(self, i : int, x : object) -> object:
-        pass 
+        if i < 0 or i >= self.size():
+            raise IndexError()
+        oldValue = self.a[i]
+        self.a[i] = x
+        return oldValue 
     
     def add(self, i: int, x : object) :
         '''
             shift all j > i one position to the right
             and add element x in position i
         '''
-        self.n = len(list(filter(lambda e : e, self.a)))
-        if i < 0 or i > self.n:
-            raise Exception("WTF")
-        if len(self.a) == self.n: 
+        #self.n = len(list(filter(lambda e : e, self.a)))
+        if i < 0 or i > self.size():
+            raise IndexError()
+        if len(self.a) == self.size(): 
             self.resize()
-        for j in range(self.n-i, i, -1):
-            self.a[j] = self.a[j-1]
+        for j in range(self.size()-1, i, -1):
+            self.a[j+1] = self.a[j]
         self.a[i] = x
         self.n += 1
 
@@ -55,7 +65,15 @@ class ArrayStack(Stack, List):
             remove element i and shift all j > i one 
             position to the left
         '''
-        pass 
+        if i < 0 or i >= self.size():
+            raise IndexError()
+        oldValue = self.a[i]
+        for j in range(i, self.size() - 2, -1):
+            self.a[j] = self.a[j+1]
+        self.n -= 1
+        if len(self.a) > 3 * self.size(): 
+            self.resize()
+        return oldValue
 
     def push(self, x : object) :
         self.add(self.n, x)
@@ -102,7 +120,5 @@ class ArrayStack(Stack, List):
              raise StopIteration()
         return x
         
-
-
 
 
