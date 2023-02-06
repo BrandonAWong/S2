@@ -55,7 +55,7 @@ class ArrayStack(Stack, List):
             raise IndexError()
         if len(self.a) == self.size(): 
             self.resize()
-        for j in range(self.size()-1, i, -1):
+        for j in range(self.size() - 1, i-1, -1):
             self.a[j+1] = self.a[j]
         self.a[i] = x
         self.n += 1
@@ -68,7 +68,7 @@ class ArrayStack(Stack, List):
         if i < 0 or i >= self.size():
             raise IndexError()
         oldValue = self.a[i]
-        for j in range(i, self.size() - 2, -1):
+        for j in range(i, self.size()):
             self.a[j] = self.a[j+1]
         self.n -= 1
         if len(self.a) > 3 * self.size(): 
@@ -119,6 +119,3 @@ class ArrayStack(Stack, List):
         else:
              raise StopIteration()
         return x
-        
-
-
