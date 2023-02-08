@@ -1,0 +1,39 @@
+BINARY LOGIC
+
+=====
+VOCAB
+=====
+
+Digitcal circuit - hardware componest that manipulates binary information
+Logic gate - basic digital circuit that performs specific logical operation
+Binary logic - deals with binary variables and the operation of mathemical logic applied to these variables
+Binary varialbes - variables that take on two discrete values
+*binary logic resembes binary arithmetic but should not be confused with each other 
+
+=============
+2 INPUT GATES
+=============
+
+and --> logical product 
+=D-   ____
+     |    \
+A ---|     \ --- C = A and B
+B ---|     / 
+     |____/ 
+
+A ⋅ B means A and B
+
+or --> logical sum
+     ______
+     \     \
+A --- \     \ --- C = A or B
+B --- /     /
+     /_____/
+
+A + B means A or B
+
+nand
+
+nor
+
+xnor

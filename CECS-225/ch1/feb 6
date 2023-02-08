@@ -1,0 +1,11 @@
+FEBUARY 6 2023
+
+=========================
+TWO'S COMPLEMENT SHORTCUT
+=========================
+
+get binary of number
+copy all 0's until you reach 1
+once you reach first one, copy it as well
+then left bits after, flip them
+
