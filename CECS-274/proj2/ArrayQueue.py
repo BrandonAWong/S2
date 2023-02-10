@@ -15,20 +15,36 @@ class ArrayQueue(Queue):
         '''
             Resize the array
         '''
-        pass
+        tempArray = self.new_array(max(1, 2 * self.size()))
+        for k in range(self.size()):
+            tempArray[k] = self.a[(self.j + k) % len(self.a)]
+        self.a = tempArray
+        self.j = 0
 
     def add(self, x: object):
         '''
             shift all j > i one position to the right
             and add element x in position i
         '''
-        pass
+        if self.size() == len(self.a):
+            self.resize()
+        self.a[(self.j + self.n) % len(self.a)] = x
+        self.n += 1
+        return True
 
     def remove(self) -> object:
         '''
             remove the first element in the queue
         '''
-        pass
+        if self.size() <= 0:
+            raise IndexError()
+        oldValue = self.a[self.j]
+        self.a[self.j] = 0
+        self.j = (self.j + 1) % len(self.a)
+        self.n -= 1
+        if len(self.a) >= 3 * self.size():
+            self.resize()
+        return oldValue
 
     def size(self):
         return self.n
