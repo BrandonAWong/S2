@@ -1,21 +1,32 @@
 import numpy as np
 import ArrayStack
+'''
 import BinaryTree
 import ChainedHashTable
 import DLList
 import operator
-
+'''
 
 class Calculator:
     def __init__(self):
-        self.dict = ChainedHashTable.ChainedHashTable(DLList.DLList)
+        self.dict = None #ChainedHashTable.ChainedHashTable(DLList.DLList)
 
     def set_variable(self, k: str, v: float):
         self.dict.add(k, v)
 
     def matched_expression(self, s: str) -> bool:
-        # todo
-        pass
+        stack = ArrayStack.ArrayStack()  
+        for el in s:
+            if el == '(':
+                stack.push(s)
+            elif el == ')':
+                try:
+                    stack.pop()
+                except:
+                    return False
+        if stack.size() == 0:
+            return True
+        return False 
 
     def build_parse_tree(self, exp: str) -> str:
         # todo
