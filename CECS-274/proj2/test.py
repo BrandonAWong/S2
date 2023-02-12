@@ -47,8 +47,8 @@ from ArrayStack import *
 
 arr = ArrayStack()
 for i in range(5, 0, -1):
-    print(arr.a)
     arr.push(i)
+    print(arr.a)
 
 print(arr.a)
 
@@ -56,11 +56,11 @@ removeList = []
 
 for i in range(5):
     removeList.append(arr.pop())
-    print(arr.a)
+    print(arr)
 
 print(removeList)
 '''
-
+'''
 from ArrayQueue import ArrayQueue
 
 queue = ArrayQueue()
@@ -81,3 +81,69 @@ for i in range(3):
     queue.remove()
     print(queue.a)
 
+'''
+'''
+#lab
+from ArrayQueue import ArrayQueue
+
+arr = ArrayQueue()
+
+arr.add('z')
+arr.add('A')
+arr.add('B')
+arr.remove()
+arr.add('C')
+
+print(arr.a)
+#call 1
+arr.remove()
+print(arr.a)
+#call 2
+arr.add('X')
+print(arr.a)
+#call 3
+arr.add('Y')
+print(arr.a)
+#call 4
+arr.add('Z')
+print(arr.a)
+#call 5
+arr.remove()
+print(arr.a)
+#call 6
+arr.remove()
+print(arr.a)
+'''
+
+'''
+#random queue test
+from RandomQueue import RandomQueue
+arr = RandomQueue()
+for i in range(1,6):
+    arr.add(i)
+print(arr.a)
+for i in range(5):
+    arr.remove()
+    print(arr.a)
+'''
+
+'''
+#array list
+from ArrayList import ArrayList
+
+arr = ArrayList()
+arr.add(0,4)
+print(arr.a, arr.j)
+arr.add(0,1)
+print(arr.a, arr.j)
+arr.add(1,3)
+print(arr.a, arr.j)
+arr.add(1,2)
+print(arr.a, arr.j)
+arr.add(4,5)
+print(arr.a, arr.j)
+arr.remove(2)
+print(arr, arr.j)
+arr.remove(3)
+print(arr, arr.j)
+'''

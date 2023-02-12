@@ -29,7 +29,12 @@ class ArrayList(List):
         '''
         resize: Create a new array and copy the old values. 
         '''
-        pass
+        
+        tempArray = self.new_array(max(1, 2 * self.size()))
+        for k in range(self.size()):
+            tempArray[k] = self.a[(self.j + k) % len(self.a)]
+        self.a = tempArray
+        self.j = 0
 
     def get(self, i: int) -> object:
         '''
@@ -37,7 +42,9 @@ class ArrayList(List):
         Inputs:
             i: Index that is integer non negative and at most n
         '''
-        pass
+        if i < 0 or i >= self.size():
+            raise IndexError()
+        return self.a[(self.j + i) % len(self.a)] 
 
     def set(self, i: int, x: object) -> object:
         '''
@@ -46,7 +53,9 @@ class ArrayList(List):
             i: Index that is integer non negative and at most n
             x: Object type, i.e., any object 
         '''
-        pass
+        if i < 0 or i >= self.size():
+            raise IndexError()
+        self.a[(self.j + i) % len(self.a)] = x
 
     def append(self, x: object):
         self.add(self.n, x)
@@ -60,11 +69,36 @@ class ArrayList(List):
                 i: Index that is integer non negative and at most n
                 x: Object type, i.e., any object
         '''
-        pass
+        if i < 0 or i > self.size():
+            raise IndexError()
+        if len(self.a) == self.size():
+            self.resize()
+        if i < self.size() / 2:
+            for k in range(i):
+                self.a[(self.j + k - 1) % len(self.a)] = self.a[(self.j + k) % len(self.a)]
+            self.j -= 1
+        else:
+            for k in range(self.size() - 1, i - 1, -1):
+                self.a[(self.j + k + 1) % len(self.a)] = self.a[(self.j + k) % len(self.a)]
+        self.a[(self.j + i) % len(self.a)] = x
+        self.n += 1
 
     def remove(self, i: int) -> object:
-        pass
-
+        if i < 0 or i >= self.size():
+            raise IndexError()
+        x = self.a[(self.j + i) % len(self.a)]
+        if i < self.size() / 2:
+            for k in range(i, 0, -1):
+                self.a[(self.j + k) % len(self.a)] = self.a[(self.j + k - 1) % len(self.a)]
+            self.j = (self.j + 1) % len(self.a)
+        else:
+            for k in range(i, self.size() - 1):
+                self.a[(self.j + k) % len(self.a)] = self.a[(self.j + k + 1) % len(self.a)]
+        self.n -= 1
+        if len(self.a) >= 3 * self.size():
+            self.resize()
+        return x
+    
     def size(self) -> int:
         return self.n
 
