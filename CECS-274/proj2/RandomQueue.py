@@ -17,17 +17,10 @@ class RandomQueue(ArrayQueue):
             raise IndexError()
         buffalo = randint(self.j, self.n-1)
         wings = self.a[buffalo]
-        for i in range(buffalo, self.n):
-            self.a[i] = self.a[i + 1]
+        self.a[buffalo] = self.a[self.j]
+        self.a[self.j] = 0
+        self.j = (self.j + 1) % len(self.a)
         self.n -= 1
         if len(self.a) >= 3 * self.n:
             self.resize()
         return wings
-
-arr = RandomQueue()
-for i in range(1,6):
-    arr.add(i)
-print(arr.a)
-for i in range(5):
-    arr.remove()
-    print(arr.a)
