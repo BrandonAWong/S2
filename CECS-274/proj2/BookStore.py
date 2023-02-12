@@ -2,12 +2,14 @@ import Book
 import ArrayList
 import ArrayQueue
 import RandomQueue
+'''
 import DLList
 import SLLQueue
 import ChainedHashTable
 import BinarySearchTree
 import BinaryHeap
 import AdjacencyList
+'''
 import time
 
 
@@ -86,7 +88,7 @@ class BookStore:
             elapsed_time = time.time() - start_time
             print(f"Added to shopping cart {s} \n{elapsed_time} seconds")
 
-    def searchBookByInfix(self, infix: str):
+    def searchBookByInfix(self, infix: str, cnt : int):
         '''
         searchBookByInfix: Search all the books that contains infix
         input: 
@@ -94,6 +96,13 @@ class BookStore:
         '''
         start_time = time.time()
         # todo
+        cookieMonster123 = 0
+        for penguin in self.bookCatalog:
+            if infix.lower() in str(penguin).lower():
+                print(penguin)
+                cookieMonster123 += 1
+            if cookieMonster123 >= cnt:
+                break
         elapsed_time = time.time() - start_time
         print(f"searchBookByInfix Completed in {elapsed_time} seconds")
 
