@@ -31,7 +31,6 @@ class ArrayStack(Stack, List):
         for i in range(self.size()):
             tempArray[i] = self.a[i]
         self.a = tempArray
-        return tempArray 
 
     def get(self, i : int) -> object:
         if i < 0 or i >= self.size():
@@ -68,7 +67,7 @@ class ArrayStack(Stack, List):
         if i < 0 or i >= self.size():
             raise IndexError()
         oldValue = self.a[i]
-        for j in range(i, self.size()):
+        for j in range(i, self.size() - 1):
             self.a[j] = self.a[j+1]
         self.n -= 1
         if len(self.a) > 3 * self.size(): 
