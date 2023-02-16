@@ -119,10 +119,10 @@ print(arr.a)
 #random queue test
 from RandomQueue import RandomQueue
 arr = RandomQueue()
-for i in range(1,6):
+for i in range(1,5):
     arr.add(i)
 print(arr.a)
-for i in range(5):
+for i in range(4):
     arr.remove()
     print(arr.a)
 '''
@@ -147,3 +147,42 @@ print(arr, arr.j)
 arr.remove(3)
 print(arr, arr.j)
 '''
+
+#array list lab
+from ArrayList import ArrayList
+arr = ArrayList()
+arr.append('1')
+arr.append('2')
+arr.append('A')
+arr.append('B')
+arr.append('C')
+arr.append('D')
+arr.append('E')
+arr.remove(0)
+arr.remove(0)
+print(arr.a)
+#call 1
+arr.add(2,'b')
+print(arr.a)
+print(arr.j, arr.n)
+
+#call 2
+arr.remove(3)
+print(arr.a)
+print(arr.j, arr.n)
+
+#call 3
+arr.add(1,'d')
+print(arr.a)
+print(arr.j, arr.n)
+
+#call 4 
+arr.add(0,'z')
+print(arr.a)
+print(arr.j, arr.n)
+
+#call 5
+arr.add(7,'e')
+arr.add(5,'f')
+print(arr.a)
+print(arr.a[arr.j], arr.n)

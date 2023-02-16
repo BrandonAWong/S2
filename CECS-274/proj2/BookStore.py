@@ -98,7 +98,8 @@ class BookStore:
         # todo
         cookieMonster123 = 0
         for penguin in self.bookCatalog:
-            if infix.lower() in str(penguin.title).lower():
+            #if infix.lower() in str(penguin.title).lower():
+            if infix in str(penguin.title):
                 print(penguin)
                 cookieMonster123 += 1
             if cookieMonster123 >= cnt:
