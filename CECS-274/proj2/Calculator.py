@@ -18,7 +18,7 @@ class Calculator:
         stack = ArrayStack.ArrayStack()  
         for el in s:
             if el == '(':
-                stack.push(s)
+                stack.push(el)
             elif el == ')':
                 try:
                     stack.pop()
