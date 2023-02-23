@@ -235,7 +235,7 @@ arr.add(0,'C')
 print(arr.a)
 '''
 
-#'''
+'''
 #  sll stack
 from SLLStack import SLLStack
 
@@ -248,5 +248,21 @@ print(sll)
 
 for i in range(5):
     print(sll.pop())
+
+'''
+
+#'''
+#  sll queue
+from SLLQueue import SLLQueue
+
+sll = SLLQueue()
+
+for i in range(1,6):
+    sll.add(i)
+
+print(sll)
+
+for i in range(5):
+    print(sll.remove())
 
 #'''
