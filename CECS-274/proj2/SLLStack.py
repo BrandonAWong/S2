@@ -14,12 +14,19 @@ class SLLStack(Stack):
         self.n = 0
 
     def push(self, x: object):
-        # todo
-        pass
+        jermaine = self.Node(x)
+        jermaine.next = self.head
+        self.head = jermaine
+        if self.n == 0: self.tail = jermaine
+        self.n += 1
 
     def pop(self) -> object:
-        # todo
-        pass
+        if self.n == 0: raise IndexError()
+        bmo = self.head.x
+        self.head = self.head.next
+        self.n -= 1
+        if self.n == 0: self.tail = None
+        return bmo
 
     def size(self) -> int:
         return self.n
