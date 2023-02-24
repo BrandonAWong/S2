@@ -1,7 +1,8 @@
+'''
 from ArrayStack import *
 
-'''
-lab
+
+#lab
 arr = ArrayStack()
 letters = ['A','B','C','D','E','F']
 for l in letters:
@@ -119,11 +120,11 @@ print(arr.a)
 #random queue test
 from RandomQueue import RandomQueue
 arr = RandomQueue()
-for i in range(1,5):
+for i in range(1,6):
     arr.add(i)
 print(arr.a)
-for i in range(4):
-    arr.remove()
+for i in range(5):
+    print(arr.remove())
     print(arr.a)
 '''
 
@@ -143,11 +144,11 @@ print(arr.a, arr.j)
 arr.add(4,5)
 print(arr.a, arr.j)
 arr.remove(2)
-print(arr, arr.j)
+print(arr.a, arr.j)
 arr.remove(3)
 print(arr, arr.j)
 '''
-
+'''
 #array list lab
 from ArrayList import ArrayList
 arr = ArrayList()
@@ -186,3 +187,82 @@ arr.add(7,'e')
 arr.add(5,'f')
 print(arr.a)
 print(arr.a[arr.j], arr.n)
+'''
+
+'''
+#quiz : array list
+from ArrayList import ArrayList
+arr = ArrayList()
+arr.append('1')
+arr.append('A')
+arr.append('B')
+arr.append('C')
+arr.append('D')
+arr.append('E')
+arr.append('F')
+arr.remove(0)
+print(arr.a)
+
+arr.add(6,'G')
+print(arr.a)
+arr.add(5,'f')
+print(arr.a)
+arr.add(2,'c')
+print(arr.a)
+arr.remove(6)
+print(arr.a)
+'''
+'''
+#quiz : array stack
+from ArrayStack import ArrayStack
+
+arr = ArrayStack()
+asidasdadas = ['A','B','C','D','E','F']
+for asdeasds in asidasdadas:
+    arr.push(asdeasds)
+print(arr.a)
+
+arr.remove(2)
+arr.remove(3)
+arr.remove(0)
+print(arr.a)
+print(arr)
+arr.remove(1)
+arr.add(1,'A')
+print(arr.a)
+arr.add(1,'B')
+arr.add(0,'C')
+print(arr.a)
+'''
+
+'''
+#  sll stack
+from SLLStack import SLLStack
+
+sll = SLLStack()
+
+for i in range(5,0,-1):
+    sll.push(i)
+
+print(sll)
+
+for i in range(5):
+    print(sll.pop())
+
+'''
+
+#'''
+#  sll queue
+from SLLQueue import SLLQueue
+
+sll = SLLQueue()
+
+for i in range(1,6):
+    sll.add(i)
+
+print(sll)
+
+for i in range(5):
+    print(sll.remove())
+
+#'''

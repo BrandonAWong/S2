@@ -15,12 +15,6 @@ class RandomQueue(ArrayQueue):
         '''
         if self.n <= 0:
             raise IndexError()
-        buffalo = randint(min(self.j, self.n-1) , max(self.j, self.n-1))
-        wings = self.a[buffalo]
-        self.a[buffalo] = self.a[self.j]
-        self.a[self.j] = 0
-        self.j = (self.j + 1) % len(self.a)
-        self.n -= 1
-        if len(self.a) >= 3 * self.n:
-            self.resize()
-        return wings
+        buffalo = randint(self.j , self.n-1)
+        self.a[buffalo], self.a[self.j] = self.a[self.j], self.a[buffalo]
+        return super().remove()
