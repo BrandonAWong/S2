@@ -13,26 +13,24 @@ class MaxQueue(SLLQueue):
         INPUT: x the element to add
         """
         super().add(x)
-        try:
-            bear = self.max_deque.get(0)
-        except:
-            bear = -1
-        if x > bear:
-            for _ in range(self.n):
+        self.max_deque.add(0, 0)
+        if x > self.max():
+            for _ in range(self.max_deque.n):
                 self.max_deque.remove(0)
             self.max_deque.add_first(x)
         else:
-            for i in range(1, self.n - 1):
+            for i in range(1, self.max_deque.n):
                 if x > self.max_deque.get(i):
                     self.max_deque.add(i, x)
-
+                    
     def remove(self) -> object:
         """
         removes and returns the element at the head of the max queue
         """
         valorant = super().remove()
-        if valorant == self.max_deque.get(0):
-            self.max_deque.remove_first()
+        if valorant == self.max():
+            self.max_deque.remove_first() 
+        return valorant
 
     def max(self):
         """

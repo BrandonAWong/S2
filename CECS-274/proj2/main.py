@@ -1,6 +1,6 @@
 import Calculator
 import BookStore
-
+import DLList
 
 def menu_calculator():
     calculator = Calculator.Calculator()
@@ -35,6 +35,7 @@ def menu_bookstore_system():
         3 Add a book by index to shopping cart
         4 Remove from the shopping cart
         5 Search book by infix
+        6 Get cart best-seller
         0 Return to main menu
         """)
         option = input()
@@ -58,11 +59,23 @@ def menu_bookstore_system():
             infix = input("Introduce the query to search: ")
             cnt = int(input("Enter max number of results: "))
             bookStore.searchBookByInfix(infix, cnt)
+        elif option == "6":
+            bookStore.getCartBestSeller()
 
         ''' 
         Add the menu options when needed
         '''
 
+def palindrome_test():
+    hbjisfdlk = DLList.DLList()
+    bloogorg = input('Enter a word/phrase: ')
+    for el in bloogorg:
+        hbjisfdlk.append(el)
+    print(hbjisfdlk)
+    if hbjisfdlk.isPalindrome():
+        print('Result: Palindrome')
+    else:
+        print('Result: Not a palindrome')
 
 # main: Create the main menu
 def main():
@@ -71,6 +84,7 @@ def main():
         print("""
         1 Calculator
         2 Bookstore System
+        3 Palindrome Test
         0 Exit/Quit
         """)
         option = input()
@@ -79,6 +93,8 @@ def main():
             menu_calculator()
         elif option == "2":
             menu_bookstore_system()
+        elif option == "3":
+            palindrome_test()
 
 
 if __name__ == "__main__":

@@ -2,14 +2,15 @@ import Book
 import ArrayList
 import ArrayQueue
 import RandomQueue
-'''
 import DLList
 import SLLQueue
+'''
 import ChainedHashTable
 import BinarySearchTree
 import BinaryHeap
 import AdjacencyList
 '''
+import MaxQueue
 import time
 
 
@@ -21,7 +22,7 @@ class BookStore:
 
     def __init__(self):
         self.bookCatalog = None
-        self.shoppingCart = ArrayQueue.ArrayQueue()
+        self.shoppingCart = MaxQueue.MaxQueue()
 
     def loadCatalog(self, fileName: str):
         '''
@@ -29,7 +30,7 @@ class BookStore:
                 book records are separated by  ^. The order is key, 
                 title, group, rank (number of copies sold) and similar books
         '''
-        self.bookCatalog = ArrayList.ArrayList()
+        self.bookCatalog = DLList.DLList()
         with open(fileName, encoding="utf8") as f:
             # The following line is the time that the computation starts
             start_time = time.time()
@@ -95,10 +96,8 @@ class BookStore:
             infix: A string    
         '''
         start_time = time.time()
-        # todo
         cookieMonster123 = 0
         for penguin in self.bookCatalog:
-            #if infix.lower() in str(penguin.title).lower():
             if infix in str(penguin.title):
                 print(penguin)
                 cookieMonster123 += 1
@@ -116,3 +115,9 @@ class BookStore:
             u = self.shoppingCart.remove()
             elapsed_time = time.time() - start_time
             print(f"removeFromShoppingCart {u} Completed in {elapsed_time} seconds")
+
+    def getCartBestSeller(self):
+        '''
+        getCartBestSeller: returns best-seller amongst the rest of the books in the cart
+        '''
+        return self.shoppingCart.max()

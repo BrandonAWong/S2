@@ -28,7 +28,7 @@ class DLList(List):
         return poo        
     
     def get(self, i) -> object:
-        if i < 0 or i >= self.n: raise Exception()
+        if i < 0 or i > self.n: return Exception()
         return self.get_node(i).x
 
     def set(self, i: int, x: object) -> object:
@@ -71,7 +71,7 @@ class DLList(List):
     def isPalindrome(self) -> bool:
         googoogaga = self.get_node(0)
         booboo = self.get_node(self.n - 1)
-        for _ in range(self.n / 2 - 1):
+        for _ in range(self.n // 2):
             if googoogaga.x != booboo.x:
                 return False
             googoogaga = googoogaga.next
