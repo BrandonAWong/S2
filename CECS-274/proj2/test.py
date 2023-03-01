@@ -251,7 +251,7 @@ for i in range(5):
 
 '''
 
-#'''
+'''
 #  sll queue
 from SLLQueue import SLLQueue
 
@@ -265,4 +265,48 @@ print(sll)
 for i in range(5):
     print(sll.remove())
 
+'''
+
+'''
+#lab sll queue 
+from SLLQueue import *
+s = SLLQueue()
+
+s.add('A')
+s.add('C')
+s.add('E')
+print(s)
+
+s.remove()
+print(s)
+s.remove()
+print(s, s.head.x, s.tail.x)
+s.add('X')
+print(s, s.head.x, s.tail.x)
+s.add('Y')
+print(s, s.head.x, s.tail.x)
+s.remove()
+print(s, s.head.x, s.tail.x)
+s.add('Z')
+print(s, s.head.x, s.tail.x)
+s.remove()
+print(s, s.head.x, s.tail.x)
+
+'''
+
+#sfor index, char in enumerate(pal)
+
+#'''
+#lab sll stack
+from SLLStack import SLLStack
+s = SLLStack()
+s.push('E')
+s.push('C')
+s.push('A')
+print(s, s.head.x, s.tail.x)
+s.pop()
+print(s, s.head.x, s.tail.x)
+s.pop()
+s.push('X')
+print(s)
 #'''
