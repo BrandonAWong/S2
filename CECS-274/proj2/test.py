@@ -294,9 +294,9 @@ print(s, s.head.x, s.tail.x)
 
 '''
 
-#sfor index, char in enumerate(pal)
+# for index, char in enumerate(pal)
 
-#'''
+'''
 #lab sll stack
 from SLLStack import SLLStack
 s = SLLStack()
@@ -309,4 +309,37 @@ print(s, s.head.x, s.tail.x)
 s.pop()
 s.push('X')
 print(s)
+'''
+
+'''
+# dl list
+import DLList
+l = DLList.DLList()
+l.add(0,4)
+l.add(0,1)
+l.add(1,3)
+l.add(1,2)
+l.add(4,5)
+print(l)
+print(l.get(1))
+l.remove(2)
+print(l)
+l.remove(3)
+print(l)
+l.reverse()
+print(l)
+'''
+
 #'''
+#max queue
+from MaxQueue import MaxQueue
+
+q = MaxQueue()
+q.add(3)
+print(q, q.max_deque)
+
+#'''
+import MaxQueue
+l = MaxQueue.MaxQueue() 
+l.max_deque.add_first(1)
+print(l.max_deque)
