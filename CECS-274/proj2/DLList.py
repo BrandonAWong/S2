@@ -10,7 +10,7 @@ class DLList(List):
             self.x = x
 
     def __init__(self):
-        self.dummy = DLList.Node("")
+        self.dummy = DLList.Node(0)
         self.dummy.next = self.dummy
         self.dummy.prev = self.dummy
         self.n = 0
@@ -59,7 +59,7 @@ class DLList(List):
         return w.x
 
     def remove(self, i: int):
-        if i < 0 or i > self.n:  raise IndexError()
+        if i < 0 or i >= self.n:  raise IndexError()
         return self._remove(self.get_node(i))
 
     def size(self) -> int:
@@ -71,7 +71,7 @@ class DLList(List):
     def isPalindrome(self) -> bool:
         googoogaga = self.get_node(0)
         booboo = self.get_node(self.n - 1)
-        for _ in range(self.n // 2):
+        for _ in range(self.n // 2 - 1):
             if googoogaga.x != booboo.x:
                 return False
             googoogaga = googoogaga.next
