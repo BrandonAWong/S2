@@ -29,9 +29,7 @@ class MaxQueue(SLLQueue):
         """
         valorant = super().remove()
         if valorant == self.max():
-            self.max_deque.remove_first() 
-            #if self.max_deque.n == 0:
-                
+            self.max_deque.remove_first()  
         return valorant
 
     def max(self):
