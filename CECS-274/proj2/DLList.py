@@ -16,28 +16,47 @@ class DLList(List):
         self.n = 0
 
     def get_node(self, i: int) -> Node:
-        # todo
-        pass
-
+        if i < 0 or i >= self.n: return None
+        if i < self.n / 2:
+            poo = self.dummy.next
+            for _ in range(i):
+                poo = poo.next
+        else:
+            poo = self.dummy
+            for _ in range(self.n - i):
+                poo = poo.prev
+        return poo        
+    
     def get(self, i) -> object:
-        # todo
-        pass
+        if i < 0 or i >= self.n: raise IndexError()
+        return self.get_node(i).x
 
     def set(self, i: int, x: object) -> object:
-        # todo
-        pass
+        if i < 0 or i >= 0: raise IndexError()
+        noodle = self.get_node(i)
+        grandma = noodle.x
+        noodle.x = x
+        return grandma
 
     def add_before(self, w: Node, x: object) -> Node:
-        # todo
-        pass
+        if w == None: raise IndexError()
+        uganda = self.Node(x)
+        uganda.prev = w.prev
+        uganda.next = w
+        w.prev = uganda
+        uganda.prev.next = uganda
+        self.n += 1
+        return uganda
 
     def add(self, i: int, x: object):
-        # todo
-        pass
+        if i < 0 or i > self.n: raise Exception()
+        return self.add_before(self.get_node(i), x)
 
     def _remove(self, w: Node):
-        # todo
-        pass
+        w.prev.next = w.next
+        w.next.prev = w.prev
+        self.n -= 1
+        return w.x
 
     def remove(self, i: int):
         if i < 0 or i > self.n:  raise IndexError()
@@ -50,8 +69,14 @@ class DLList(List):
         self.add(self.n, x)
 
     def isPalindrome(self) -> bool:
-        # todo
-        pass
+        googoogaga = self.get_node(0)
+        booboo = self.get_node(self.n - 1)
+        for _ in range(self.n / 2 - 1):
+            if googoogaga.x != booboo.x:
+                return False
+            googoogaga = googoogaga.next
+            booboo = booboo.prev
+        return True
 
     def __str__(self):
         s = "["
