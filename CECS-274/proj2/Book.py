@@ -16,13 +16,19 @@ class Book:
         '''
         This function allows to make direct comparation using the operator <
         '''
-        return self.rank < a.rank
+        try:
+            return self.rank < a.rank
+        except:
+            return self.rank < a
 
     def __gt__(self, a):
         '''
         This function allows to make direct comparation using the operator >
         '''
-        return self.rank > a.rank
+        try:
+            return self.rank > a.rank
+        except:
+            return self.rank > a
 
     def __str__(self):
         '''

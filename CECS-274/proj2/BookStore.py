@@ -120,4 +120,4 @@ class BookStore:
         '''
         getCartBestSeller: returns best-seller amongst the rest of the books in the cart
         '''
-        return self.shoppingCart.max()
+        return self.shoppingCart.max().title
