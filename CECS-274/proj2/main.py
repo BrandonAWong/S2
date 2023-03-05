@@ -68,10 +68,14 @@ def menu_bookstore_system():
 
 def palindrome_test():
     hbjisfdlk = DLList.DLList()
-    bloogorg = input('Enter a word/phrase: ')
+    bloogorg = input('Enter a word/phrase: ').lower()
+    goobies = ['!', '"', '#', '$', '%', '&', "'", '’', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', 
+               '=', '>', '?', '@', '[', '\\', ']', '.', '^', '_', '`', '{', '|', '}', '~', ' ']
+    for goobie in goobies:
+        if goobie in bloogorg:
+            bloogorg = bloogorg.replace(goobie,"")
     for el in bloogorg:
         hbjisfdlk.append(el)
-    print(hbjisfdlk)
     if hbjisfdlk.isPalindrome():
         print('Result: Palindrome')
     else:
