@@ -71,7 +71,7 @@ class DLList(List):
     def isPalindrome(self) -> bool:
         googoogaga = self.get_node(0)
         booboo = self.get_node(self.n - 1)
-        for _ in range(self.n // 2 - 1):
+        for _ in range(self.n // 2):
             if googoogaga.x != booboo.x:
                 return False
             googoogaga = googoogaga.next
