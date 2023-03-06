@@ -69,8 +69,8 @@ class DLList(List):
         self.add(self.n, x)
 
     def isPalindrome(self) -> bool:
-        googoogaga = self.get_node(0)
-        booboo = self.get_node(self.n - 1)
+        googoogaga = self.dummy.next
+        booboo = self.dummy.prev
         for _ in range(self.n // 2):
             if googoogaga.x != booboo.x:
                 return False
@@ -79,8 +79,8 @@ class DLList(List):
         return True
 
     def reverse(self):
-        woo = self.get_node(0)
-        boo = self.get_node(self.n - 1)
+        woo = self.dummy.next
+        boo = self.dummy.prev
         for _ in range(self.n // 2):
             woo.x, boo.x = boo.x, woo.x
             woo = woo.next
