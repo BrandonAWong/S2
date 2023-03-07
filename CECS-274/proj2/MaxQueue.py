@@ -13,15 +13,9 @@ class MaxQueue(SLLQueue):
         INPUT: x the element to add
         """
         super().add(x)
-        if x > self.max():
-            for _ in range(self.max_deque.n):
-                self.max_deque.remove(0)
-            self.max_deque.add_first(x)
-        else:
-            for i in range(1, self.max_deque.n + 1):
-                if x > self.max_deque.get(i):
-                    self.max_deque.add(i, x)
-                    break
+        while self.max_deque.n != 0 and self.max_deque.dummy.prev.x < x:
+            self.max_deque.remove_last()
+        self.max_deque.add_last(x)
                     
     def remove(self) -> object:
         """

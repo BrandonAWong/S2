@@ -1,7 +1,7 @@
 import Book
-import ArrayList
-import ArrayQueue
-import RandomQueue
+#import ArrayList
+#import ArrayQueue
+#import RandomQueue
 import DLList
 import SLLQueue
 '''
@@ -87,7 +87,7 @@ class BookStore:
             s = self.bookCatalog.get(i)
             self.shoppingCart.add(s)
             elapsed_time = time.time() - start_time
-            print(f"Added to shopping cart {s} \n{elapsed_time} seconds")
+            print(f"Added to shopping cart {s}) \n{elapsed_time} seconds")
 
     def searchBookByInfix(self, infix: str, cnt : int):
         '''
@@ -120,4 +120,9 @@ class BookStore:
         '''
         getCartBestSeller: returns best-seller amongst the rest of the books in the cart
         '''
+        print(f'getCartBestSeller returned')
+        print(self.shoppingCart.max().title)
+
         return self.shoppingCart.max().title
+
+         

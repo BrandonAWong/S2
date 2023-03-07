@@ -60,7 +60,7 @@ def menu_bookstore_system():
             cnt = int(input("Enter max number of results: "))
             bookStore.searchBookByInfix(infix, cnt)
         elif option == "6":
-            print(bookStore.getCartBestSeller())
+            bookStore.getCartBestSeller()
 
         ''' 
         Add the menu options when needed
