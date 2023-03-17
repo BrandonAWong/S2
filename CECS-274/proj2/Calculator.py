@@ -1,15 +1,14 @@
 import numpy as np
 import ArrayStack
-'''
-import BinaryTree
+#import BinaryTree
 import ChainedHashTable
 import DLList
-import operator
-'''
+#import operator
+
 
 class Calculator:
     def __init__(self):
-        self.dict = None #ChainedHashTable.ChainedHashTable(DLList.DLList)
+        self.dict = ChainedHashTable.ChainedHashTable(DLList.DLList)
 
     def set_variable(self, k: str, v: float):
         self.dict.add(k, v)

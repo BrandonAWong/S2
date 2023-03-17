@@ -4,8 +4,8 @@ import Book
 #import RandomQueue
 import DLList
 import SLLQueue
-'''
 import ChainedHashTable
+'''
 import BinarySearchTree
 import BinaryHeap
 import AdjacencyList
@@ -23,6 +23,7 @@ class BookStore:
     def __init__(self):
         self.bookCatalog = None
         self.shoppingCart = MaxQueue.MaxQueue()
+        self.bookIndices = ChainedHashTable.ChainedHashTable()
 
     def loadCatalog(self, fileName: str):
         '''
@@ -38,6 +39,7 @@ class BookStore:
                 (key, title, group, rank, similar) = line.split("^")
                 s = Book.Book(key, title, group, rank, similar)
                 self.bookCatalog.append(s)
+                self.bookIndices.add(key, self.bookCatalog.size() - 1)
             # The following line is used to calculate the total time 
             # of execution
             elapsed_time = time.time() - start_time
@@ -122,7 +124,16 @@ class BookStore:
         '''
         print(f'getCartBestSeller returned')
         print(self.shoppingCart.max().title)
-
         return self.shoppingCart.max().title
-
-         
+    
+    def addBookByKey(self, key):
+        start_time = time.time()
+        indicieisadiashujashdjkadsjhkl = self.bookIndices.find(key)
+        if indicieisadiashujashdjkadsjhkl == None:
+            print('Book not found.')
+        else:
+            ihukjfsdiuhjlnsfdijuohlsfdlhjiksfdwljhkn = self.bookCatalog.get(indicieisadiashujashdjkadsjhkl)
+            self.shoppingCart.add(ihukjfsdiuhjlnsfdijuohlsfdlhjiksfdwljhkn)
+            print(f'Added title: {ihukjfsdiuhjlnsfdijuohlsfdlhjiksfdwljhkn.title}')
+        elapsed_time = time.time() - start_time
+        print(f'addBookByKey Completed in {elapsed_time} seconds')

@@ -8,6 +8,8 @@ def menu_calculator():
     while option != '0':
         print("""
         1 Check mathematical expression 
+        2 Store variable values
+        3 Print expression with values
         0 Return to main menu
         """)
         option = input()
@@ -17,11 +19,25 @@ def menu_calculator():
                 print(f"{expression} is a valid expression")
             else:
                 print(f"{expression} is invalid expression")
+        elif option == '2':
+            while True:
+                variable = input('Enter a variable: ')
 
+                val = input('Etner its value: ')
+
+                if not(input('Enter another variable? Y\\N ') == 'Y'):
+                    break
+            menu_calculator()
+        elif option == '3':
+            exp = input('Introduce the mathematical expression: ')
+            if not calculator.matched_expression(exp):
+                print('Invalid expression')
+                menu_calculator()
+            else:
+                calculator.print_expression(exp)
         ''' 
         Add the menu options when needed
         '''
-
 
 def menu_bookstore_system():
     bookStore = BookStore.BookStore()
@@ -36,6 +52,7 @@ def menu_bookstore_system():
         4 Remove from the shopping cart
         5 Search book by infix
         6 Get cart best-seller
+        7 Add a book by key to shopping cart
         0 Return to main menu
         """)
         option = input()
@@ -61,7 +78,9 @@ def menu_bookstore_system():
             bookStore.searchBookByInfix(infix, cnt)
         elif option == "6":
             bookStore.getCartBestSeller()
-
+        elif option == '7':
+            key = input('Enter book key: ')
+            bookStore.addBookByKey(key)
         ''' 
         Add the menu options when needed
         '''
