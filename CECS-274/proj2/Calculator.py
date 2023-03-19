@@ -31,17 +31,16 @@ class Calculator:
     def print_expression(self, exp):
         YAHSDIKASHLKD = [x for x in split('\W+', exp) if x.isalnum()]
         bloop = split('\w+', exp)
-        kerblam = []
+        kerblam = ''
         for i in range(len(YAHSDIKASHLKD)):
-            kerblam.append(bloop[i])
-            yipyip = str(self.dict.find(YAHSDIKASHLKD[i]))
-            if yipyip != 'None':
-                kerblam.append(yipyip)
+            kerblam += bloop[i]
+            yipyip = self.dict.find(YAHSDIKASHLKD[i])
+            if yipyip != None:
+                kerblam += str(yipyip)
             else:
-                kerblam.append(str(YAHSDIKASHLKD[i]))
-        kerblam.append(bloop[-1])
-        print("".join(kerblam))
-
+                kerblam += str(YAHSDIKASHLKD[i])
+        kerblam += bloop[-1]
+        print(kerblam)
 
     def build_parse_tree(self, exp: str) -> str:
         # todo
