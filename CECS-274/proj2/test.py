@@ -345,7 +345,7 @@ l.max_deque.add_first(1)
 print(l.max_deque)
 '''
 
-#"""
+"""
 # TESTER
 import MaxQueue
 mq = MaxQueue.MaxQueue()
@@ -436,4 +436,45 @@ while mq.size() > 0:
     if mq.size() > 0:
         print("Max element", mq.max(), "\n\n")
         
-#"""
+"""
+
+'''
+#hash table
+from ChainedHashTable import *
+t = ChainedHashTable()
+print(t.remove(2))
+t.add(1,'first')
+print(len(t))
+t.add(2,'second')
+t.add(3,'third')
+t.add(3,'fourth')
+print(t.size())
+t.remove(3)
+print(t.size())
+print(t.find(3))
+t.add(3,'third')
+t.add(4,'four')
+t.add(5,'five')
+print(t.size())
+print(t)
+print(t.find(3))
+'''
+from ChainedHashTable import *
+t = ChainedHashTable()
+
+t.add(23, 'A')
+print(t.d)
+t.add(15, 'B')
+print(t.d)
+
+
+t.add(11, 'C')
+t.remove(23)
+print(t.d)
+t.remove(15)
+print(t.d)
+t.add(10, 'D')
+print(t.d)
+t.add(12,'A')
+
+print(t)

@@ -20,19 +20,14 @@ def menu_calculator():
             else:
                 print(f"{expression} is invalid expression")
         elif option == '2':
-            while True:
-                variable = input('Enter a variable: ')
-
-                val = input('Etner its value: ')
-
-                if not(input('Enter another variable? Y\\N ') == 'Y'):
+            while True: 
+                calculator.set_variable(input('Enter a variable: '), input('Etner its value: '))
+                if not(input('Enter another variable? Y\\N ').upper() == 'Y'):
                     break
-            menu_calculator()
         elif option == '3':
             exp = input('Introduce the mathematical expression: ')
             if not calculator.matched_expression(exp):
                 print('Invalid expression')
-                menu_calculator()
             else:
                 calculator.print_expression(exp)
         ''' 

@@ -4,6 +4,7 @@ import ArrayStack
 import ChainedHashTable
 import DLList
 #import operator
+from re import split
 
 
 class Calculator:
@@ -23,9 +24,24 @@ class Calculator:
                     stack.pop()
                 except:
                     return False
-        if stack.size() == 0:
+        if stack.size() == 0:  
             return True
         return False 
+    
+    def print_expression(self, exp):
+        YAHSDIKASHLKD = [x for x in split('\W+', exp) if x.isalnum()]
+        bloop = split('\w+', exp)
+        kerblam = []
+        for i in range(len(YAHSDIKASHLKD)):
+            kerblam.append(bloop[i])
+            yipyip = str(self.dict.find(YAHSDIKASHLKD[i]))
+            if yipyip != 'None':
+                kerblam.append(yipyip)
+            else:
+                kerblam.append(str(YAHSDIKASHLKD[i]))
+        kerblam.append(bloop[-1])
+        print("".join(kerblam))
+
 
     def build_parse_tree(self, exp: str) -> str:
         # todo
@@ -38,4 +54,4 @@ class Calculator:
 
     def evaluate(self, exp):
         parseTree = self.build_parse_tree(exp)
-        return self._evaluate(parseTree.r)
+        return self._evaluate(parseTree.r) 
