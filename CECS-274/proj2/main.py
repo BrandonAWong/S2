@@ -10,6 +10,7 @@ def menu_calculator():
         1 Check mathematical expression 
         2 Store variable values
         3 Print expression with values
+        4 Evaluate Expression
         0 Return to main menu
         """)
         option = input()
@@ -29,8 +30,17 @@ def menu_calculator():
             if not calculator.matched_expression(exp):
                 print('Invalid expression')
             else:
-                calculator.print_expression(exp)
-        ''' 
+                print(calculator.print_expression(exp))
+        elif option == '4':
+            exp = input('Enter the expression: ')
+            boonk = calculator.print_expression(exp)
+            for el in boonk:
+                if el.isalpha():    
+                    print("Result: Error - Not all variable values are defined.")
+                    return
+            print(f'Evaluating expression: {boonk}\n\
+                  Result: {calculator.evaluate(exp)}')
+        '''
         Add the menu options when needed
         '''
 
@@ -48,6 +58,7 @@ def menu_bookstore_system():
         5 Search book by infix
         6 Get cart best-seller
         7 Add a book by key to shopping cart
+        8 Add a book by title prefix to shopping cart
         0 Return to main menu
         """)
         option = input()
@@ -76,6 +87,14 @@ def menu_bookstore_system():
         elif option == '7':
             key = input('Enter book key: ')
             bookStore.addBookByKey(key)
+        elif option == '8':
+            prefix = input('Enter prefix: ')
+            book = bookStore.addBookByPrefix(prefix)
+            if book:
+                print(f'Added first matched title: {book}')
+            else:
+                print('Error: Prefix was not found.')
+
         ''' 
         Add the menu options when needed
         '''
