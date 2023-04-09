@@ -88,12 +88,7 @@ def menu_bookstore_system():
             key = input('Enter book key: ')
             bookStore.addBookByKey(key)
         elif option == '8':
-            prefix = input('Enter prefix: ')
-            book = bookStore.addBookByPrefix(prefix)
-            if book:
-                print(f'Added first matched title: {book}')
-            else:
-                print('Error: Prefix was not found.')
+            bookStore.addBookByPrefix(input('Enter prefix: '))
 
         ''' 
         Add the menu options when needed

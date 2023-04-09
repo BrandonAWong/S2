@@ -1,6 +1,6 @@
 import Book
 import ArrayList
-#import ArrayQueue
+import ArrayQueue
 #import RandomQueue
 import DLList
 import SLLQueue
@@ -22,7 +22,7 @@ class BookStore:
 
     def __init__(self):
         self.bookCatalog = None
-        self.shoppingCart = MaxQueue.MaxQueue()
+        self.shoppingCart = ArrayQueue.ArrayQueue() #MaxQueue.MaxQueue()
         self.bookIndices = ChainedHashTable.ChainedHashTable()
         self.sortedTitleIndices = BinarySearchTree.BinarySearchTree()
 
@@ -40,7 +40,7 @@ class BookStore:
                 (key, title, group, rank, similar) = line.split("^")
                 s = Book.Book(key, title, group, rank, similar)
                 self.bookCatalog.append(s)
-                self.bookIndices.add(key, self.bookCatalog.size() - 1)
+                #self.bookIndices.add(key, self.bookCatalog.size() - 1)
                 self.sortedTitleIndices.add(title, self.bookCatalog.size() - 1)
             # The following line is used to calculate the total time 
             # of execution
@@ -141,11 +141,9 @@ class BookStore:
         print(f'addBookByKey Completed in {elapsed_time} seconds')
 
     def addBookByPrefix(self, prefix):
-        #prefixLen = len(prefix)
-        book = self.sortedTitleIndices.find_greater_smallest_node(prefix)
-        if book != None:
-            self.shoppingCart.add(book)
-            return book
-
-
-        
+        book = self.sortedTitleIndices.find_smallest_greater_node(prefix)
+        if book.k[0:len(prefix)] == prefix and len(prefix) > 0:
+            self.shoppingCart.add(self.bookCatalog.get(book.v))
+            print(f'Added first matched title: {book.k}')
+        else:
+            print('Error: Prefix was not found.')

@@ -124,22 +124,18 @@ class BinarySearchTree(BinaryTree, Set):
             u.v = w.v
             self._splice(w)
     
-    def find_greater_smallest_node(self, key: object):
-        currentNode = self.r
-        wakanda = None
-        while currentNode != None:
-            if key == currentNode.k:
-                return currentNode
-            if key < currentNode.k:
-                currentNode = currentNode.left
-                if key > currentNode.k:
-                    return currentNode.parent 
-            elif key > currentNode.k:
-                currentNode = currentNode.right
-                wakanda = currentNode
+    def find_smallest_greater_node(self, key: object):
+        current = self.r
+        smallest = None
+        while current != None:
+            if key < current.k:
+                smallest = current
+                current = current.left
+            elif key > current.k:
+                current = current.right
             else:
-                break
-        return wakanda
+                return current
+        return smallest
 
     def clear(self):
         """
