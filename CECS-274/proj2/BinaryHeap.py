@@ -1,61 +1,95 @@
 import numpy as np
+import math
 from Interfaces import Queue
+from Interfaces import Tree
 
 
-
-def left(i : int):
+def left(i: int) -> int:
+    """
+    helper method; returns the index of the left child of the element at index i
+    """
     # todo
-    pass 
+    pass
 
-def right(i: int):
+
+def right(i: int) -> int:
+    """
+    helper method; returns the index of the right child of the element at index i
+    """
     # todo
-    pass 
+    pass
 
-def parent(i : int):
+
+def parent(i: int) -> int:
+    """
+    helper method; returns the index of the parent of the element at index i
+    """
     # todo
-    pass 
+    pass
 
-class BinaryHeap(Queue):
+
+def _new_array(n: int) -> np.array:
+    """
+    helper method; creates a new numpy array of 0's of size n
+    """
+    return np.zeros(n, object)
+
+
+class BinaryHeap(Queue, Tree):
     def __init__(self):
-        self.a = self.new_array(1)
+        self.a = _new_array(1)
         self.n = 0
 
-    def new_array(self, n: int) ->np.array:
-        return np.zeros(n, object)
-
-    def resize(self):
+    def add(self, x: object):
         # todo
-        pass 
-
-    def add(self, x : object):
-        # todo
-        pass 
-
-    def bubble_up(self, i):
-        # todo
-        pass 
+        pass
 
     def remove(self):
         # todo
-        pass 
+        pass
 
-    def trickle_down(self, i):
+    def depth(self, u) -> int:
         # todo
-        pass 
+        pass
+
+    def height(self) -> int:
+        # todo
+        pass
+
+    def bf_order(self) -> list:
+        # todo
+        pass
+
+    def in_order(self) -> list:
+        # todo
+        pass
+
+    def post_order(self) -> list:
+        # todo
+        pass
+
+    def pre_order(self) -> list:
+        # todo
+        pass
+
+    def size(self) -> int:
+        return self.n
 
     def find_min(self):
         if self.n == 0: raise IndexError()
         return self.a[0]
 
-    def size(self) -> int:
-        return self.n
+    def _bubble_up_last(self):
+        # todo
+        pass
+
+    def _resize(self):
+        # todo
+        pass
+
+    def _trickle_down_root(self):
+        # todo
+        pass
 
     def __str__(self):
-        s = "["
-        for i in range(0, self.n):
-            s += "%r" % self.a[(i + self.j) % len(self.a)]
-            if i  < self.n-1:
-                s += ","
-        return s + "]"
-
-
+        return str(self.a[0:self.n])
