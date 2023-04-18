@@ -77,43 +77,37 @@ class BinaryHeap(Queue, Tree):
         return self.__str__()
 
     def in_order(self) -> list:
-        nodes = []
-        ubunga = 0
-        for _ in range(self.n):
-            if self.a[left(ubunga)] != None:
-                nodes.append(self.a[left(ubunga)]) 
-            nodes.append(self.a[ubunga])
-            if self.a[right(ubunga)] != None:
-                nodes.append(self.a[right(ubunga)])
-            ubunga = parent(ubunga)
-        return nodes
+        def HELPME(indiana: int):
+            nodes = []
+            if left(indiana) < self.n:
+                nodes.extend(HELPME(left(indiana)))
+            nodes.append(self.a[indiana])
+            if right(indiana) < self.n:
+                nodes.extend(HELPME(right(indiana)))
+            return nodes
+        return HELPME(0)
     
-    # need to go from left, parent, to right
-
-        '''        sneeze = []
-        chongwu = self.n - 1
-        sneeze.append(self.a[chongwu])
-        while True:
-            chongwu = parent(chongwu)
-            sneeze.append(self.a[chongwu])
-            if chongwu == self.a[0]:
-                break
-            chongwu = right(chongwu)
-            sneeze.append(self.a[chongwu])
-            chongwu = parent(parent(chongwu))
-        for obama in range(self.height()):
-            chongwu = right(chongwu)
-            sneeze.append(self.a[chongwu])
-        
-        return sneeze
-    '''
     def post_order(self) -> list:
-        # todo
-        pass
+        def AHHHHHHH(NOOOOOOOO: int):
+            nodes = []
+            if left(NOOOOOOOO) < self.n:
+                nodes.extend(AHHHHHHH(left(NOOOOOOOO)))
+            if right(NOOOOOOOO) < self.n:
+                nodes.extend(AHHHHHHH(right(NOOOOOOOO)))
+            nodes.append(self.a[NOOOOOOOO])
+            return nodes
+        return AHHHHHHH(0)
 
     def pre_order(self) -> list:
-        # todo
-        pass
+        def wtf(whyborn: int):
+            nodes = []
+            nodes.append(self.a[whyborn])
+            if left(whyborn) < self.n:
+                nodes.extend(wtf(left(whyborn)))
+            if right(whyborn) < self.n:
+                nodes.extend(wtf(right(whyborn)))
+            return nodes
+        return wtf(0)
 
     def size(self) -> int:
         return self.n
@@ -151,13 +145,3 @@ class BinaryHeap(Queue, Tree):
             
     def __str__(self):
         return str(self.a[0:self.n])
-
-h = BinaryHeap()
-
-l = [23,22,7,14,23,28,1,29,35,5,3,11]
-
-for p in l:
-    h.add(p)
-print(h)
-
-print(h.in_order())
