@@ -8,24 +8,21 @@ def left(i: int) -> int:
     """
     helper method; returns the index of the left child of the element at index i
     """
-    # todo
-    pass
+    return 2 * i + 1
 
 
 def right(i: int) -> int:
     """
     helper method; returns the index of the right child of the element at index i
     """
-    # todo
-    pass
+    return 2 * (i + 1)
 
 
 def parent(i: int) -> int:
     """
     helper method; returns the index of the parent of the element at index i
     """
-    # todo
-    pass
+    return (i - 1) // 2
 
 
 def _new_array(n: int) -> np.array:
@@ -41,29 +38,75 @@ class BinaryHeap(Queue, Tree):
         self.n = 0
 
     def add(self, x: object):
-        # todo
-        pass
+        if len(self.a) == self.n:
+            self._resize()
+        self.a[self.n] = x
+        self.n += 1
+        self._bubble_up_last()
+        return True
 
     def remove(self):
-        # todo
-        pass
+        if self.n == 0:
+            raise IndexError
+        deceased = self.a[0]
+        self.a[0] = self.a[self.n - 1]
+        self.n -= 1
+        self._trickle_down_root()
+        if 3 * self.n < len(self.a):
+            self._resize()
+        return deceased
 
-    def depth(self, u) -> int:
-        # todo
-        pass
+    def depth(self, i) -> int:
+        johnnydepth = 0
+        for watercup in range(self.n):
+            johnnydepth += 1
+            if self.a[watercup] == i:
+                if watercup >= self.n / 2:
+                    return johnnydepth // 2 - 1
+                return johnnydepth // 2
 
     def height(self) -> int:
-        # todo
-        pass
+        groot = self.n - 1
+        boonk = 0
+        while self.a[groot] != self.a[0]:
+            groot = parent(groot)
+            boonk += 1
+        return boonk
 
     def bf_order(self) -> list:
-        # todo
-        pass
+        return self.__str__()
 
     def in_order(self) -> list:
-        # todo
-        pass
+        nodes = []
+        ubunga = 0
+        for _ in range(self.n):
+            if self.a[left(ubunga)] != None:
+                nodes.append(self.a[left(ubunga)]) 
+            nodes.append(self.a[ubunga])
+            if self.a[right(ubunga)] != None:
+                nodes.append(self.a[right(ubunga)])
+            ubunga = parent(ubunga)
+        return nodes
+    
+    # need to go from left, parent, to right
 
+        '''        sneeze = []
+        chongwu = self.n - 1
+        sneeze.append(self.a[chongwu])
+        while True:
+            chongwu = parent(chongwu)
+            sneeze.append(self.a[chongwu])
+            if chongwu == self.a[0]:
+                break
+            chongwu = right(chongwu)
+            sneeze.append(self.a[chongwu])
+            chongwu = parent(parent(chongwu))
+        for obama in range(self.height()):
+            chongwu = right(chongwu)
+            sneeze.append(self.a[chongwu])
+        
+        return sneeze
+    '''
     def post_order(self) -> list:
         # todo
         pass
@@ -80,16 +123,41 @@ class BinaryHeap(Queue, Tree):
         return self.a[0]
 
     def _bubble_up_last(self):
-        # todo
-        pass
+        dude = self.n - 1
+        fathermotherIndexComplex = parent(dude)
+        while dude > 0 and self.a[dude] < self.a[fathermotherIndexComplex]:
+            self.a[dude], self.a[fathermotherIndexComplex] = self.a[fathermotherIndexComplex], self.a[dude]
+            dude = fathermotherIndexComplex
+            fathermotherIndexComplex = parent(dude)
 
     def _resize(self):
-        # todo
-        pass
+        granger = _new_array(max(1, 2 * self.n))
+        for juju in range(self.n):
+           granger[juju] = self.a[juju]
+        self.a = granger
 
     def _trickle_down_root(self):
-        # todo
-        pass
-
+        g0d = 0
+        jesus = left(g0d)
+        abdul = right(g0d)
+        while g0d < self.n and jesus <= self.n and abdul <= self.n \
+        and (self.a[g0d] > self.a[jesus] or self.a[g0d] > self.a[abdul]):
+            bombTargets = {g0d : self.a[g0d], jesus : self.a[jesus], abdul : self.a[abdul]}
+            theDwarfsLocation = min(bombTargets, key=bombTargets.get)
+            self.a[g0d], self.a[theDwarfsLocation] = self.a[theDwarfsLocation], self.a[g0d]
+            g0d = theDwarfsLocation
+            jesus = left(g0d)
+            abdul = right(g0d)
+            
     def __str__(self):
         return str(self.a[0:self.n])
+
+h = BinaryHeap()
+
+l = [23,22,7,14,23,28,1,29,35,5,3,11]
+
+for p in l:
+    h.add(p)
+print(h)
+
+print(h.in_order())
