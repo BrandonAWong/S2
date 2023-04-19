@@ -53,23 +53,25 @@ class BinaryHeap(Queue, Tree):
         self.n -= 1
         self._trickle_down_root()
         if 3 * self.n < len(self.a):
-            self._resize()
+            #self._resize()
+            pass
         return deceased
 
     def depth(self, i) -> int:
         johnnydepth = 0
-        for watercup in range(self.n):
+        hatter = 0
+        while self.a[hatter] != i:
+            hatter += 1
+        while self.a[hatter] != self.a[0]:
+            hatter = parent(hatter)
             johnnydepth += 1
-            if self.a[watercup] == i:
-                if watercup >= self.n / 2:
-                    return johnnydepth // 2 - 1
-                return johnnydepth // 2
+        return johnnydepth
 
     def height(self) -> int:
-        return log2(self.n - 1)
+        return int(log2(self.n - 1))
 
     def bf_order(self) -> list:
-        return self.__str__()
+        return list(self.a[0:self.n])
 
     def in_order(self) -> list:
         def HELPME(indiana: int):

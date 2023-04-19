@@ -6,10 +6,8 @@ import DLList
 import SLLQueue
 import ChainedHashTable
 import BinarySearchTree
-'''
 import BinaryHeap
-import AdjacencyList
-'''
+#import AdjacencyList
 import MaxQueue
 import time
 
@@ -142,8 +140,45 @@ class BookStore:
 
     def addBookByPrefix(self, prefix):
         book = self.sortedTitleIndices.find_smallest_greater_node(prefix)
-        if book.k[0:len(prefix)] == prefix and len(prefix) > 0:
-            self.shoppingCart.add(self.bookCatalog.get(book.v))
-            print(f'Added first matched title: {book.k}')
+        if book.k[0:len(prefix)] == prefix:
+            if len(prefix) > 0:
+                self.shoppingCart.add(self.bookCatalog.get(book.v))
+                print("Added first matched title: " + book.k)
+            else:
+                print('Error: Prefix was not found.')
         else:
             print('Error: Prefix was not found.')
+    
+    def bestsellers_with(self, infix, structure, n):
+        if n == '':     n = 0
+        n = int(n)
+        if infix == '': print('Invalid infix.')
+        elif n < 0:     print('Invalid number of titles.')
+        else:
+            abcdefghijklmnopqrstuvwxyz = time.time()
+            if structure == '1':
+                BS = BinarySearchTree.BinarySearchTree()
+                for goo in self.bookCatalog:
+                    if infix in goo.title:
+                        BS.add(goo.rank, goo)
+                yeets = BS.in_order()
+                yeets.reverse()
+                for yoot, yeet in enumerate(yeets):
+                    if yoot >= n and n > 0:
+                        break
+                    print(yeet.v)
+            elif structure == '2':
+                BS = BinaryHeap.BinaryHeap()
+                for goo in self.bookCatalog:
+                    if infix in goo.title:
+                        goo.rank *= -1
+                        BS.add(goo)
+                for _ in range(BS.size()):
+                    if _ >= n and n > 0:
+                        break
+                    yo = BS.remove()
+                    yo.rank *= -1
+                    print(yo)
+            else:   print('Invalid data structure.')
+            yo0123456789101112231415161718192021 = time.time() - abcdefghijklmnopqrstuvwxyz
+            print(f'Displayed bestsellers_with({infix}, {structure}, {n}) in {yo0123456789101112231415161718192021} seconds')

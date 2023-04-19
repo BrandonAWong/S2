@@ -478,3 +478,10 @@ print(t.d)
 t.add(12,'A')
 
 print(t)
+
+
+
+l = [0, -1]
+
+l.sort()
+print(l)
