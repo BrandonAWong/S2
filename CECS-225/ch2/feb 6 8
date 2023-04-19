@@ -32,7 +32,27 @@ B --- /     /
 
 A + B means A or B
 
+xor: exlcusive or 
+      ______
+     \\     \
+A --- \\     \ --- C = A or B
+B --- //     /
+     //_____/
+
+A ⊕ B means exlusively A or B
+
+not
+A --|>o-- Ā
+
 nand
+
+      ____
+     |    \       ____
+A ---|     \ o--- A ⋅ B
+B ---|     / 
+     |____/ 
+
+
 
 nor
 
