@@ -94,7 +94,7 @@ def menu_bookstore_system():
             bookStore.bestsellers_with(input('Enter infix: '),
                                        input('Enter structure (1 or 2): '), 
                                        input('Enter max number of titles: '))
-
+            
         ''' 
         Add the menu options when needed
         '''
@@ -125,7 +125,6 @@ def main():
         0 Exit/Quit
         """)
         option = input()
-
         if option == "1":
             menu_calculator()
         elif option == "2":

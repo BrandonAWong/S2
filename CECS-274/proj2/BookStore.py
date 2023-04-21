@@ -39,7 +39,7 @@ class BookStore:
                 s = Book.Book(key, title, group, rank, similar)
                 self.bookCatalog.append(s)
                 #self.bookIndices.add(key, self.bookCatalog.size() - 1)
-                self.sortedTitleIndices.add(title, self.bookCatalog.size() - 1)
+                #self.sortedTitleIndices.add(title, self.bookCatalog.size() - 1)
             # The following line is used to calculate the total time 
             # of execution
             elapsed_time = time.time() - start_time
@@ -156,7 +156,7 @@ class BookStore:
         elif n < 0:     print('Invalid number of titles.')
         else:
             abcdefghijklmnopqrstuvwxyz = time.time()
-            if structure == '1':
+            if True:
                 BS = BinarySearchTree.BinarySearchTree()
                 for goo in self.bookCatalog:
                     if infix in goo.title:
