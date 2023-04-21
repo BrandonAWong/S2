@@ -459,7 +459,7 @@ print(t.size())
 print(t)
 print(t.find(3))
 '''
-from ChainedHashTable import *
+'''from ChainedHashTable import *
 t = ChainedHashTable()
 
 t.add(23, 'A')
@@ -484,4 +484,20 @@ print(t)
 l = [0, -1]
 
 l.sort()
-print(l)
+print(l)'''
+
+import algorithms
+a= [6, 8, -26, 7, -24, 7, 9, -12, -16, -8, -29, 27]
+
+print(algorithms.merge_sort(a))
+
+import ArrayList
+
+ab = ArrayList.ArrayList()
+for el in a:
+    ab.append(el)
+print(type(ab))
+print(len(ab))
+
+
+print(algorithms.merge_sort(ab))
