@@ -24,21 +24,23 @@ def binary_search(a: List, x):
     return None
 
 def _merge(a0: List, a1: List, a: List):
-    adudududududu = []
+    cp = 0
     while 0 < len(a0) and 0 < len(a1):
         if a0[0] < a1[0]:
-            adudududududu.append(a0.pop(0))
+            a[cp] = a0.pop(0)
         else:
-             adudududududu.append(a1.pop(0))
+             a[cp] = a1.pop(0)
+        cp += 1
     while 0 < len(a0):
-         adudududududu.append(a0.pop(0))
+         a[cp] = a0.pop(0)
+         cp += 1
     while 0 < len(a1):
-         adudududududu.append(a1.pop(0))
-    return adudududududu
+        a[cp] = a1.pop(0)
+        cp += 1
+    return a
 
 def merge_sort(a: List):
     if len(a) <= 1:
-        print(a)
         return a
     an0n = merge_sort(a[0:len(a)//2])
     a11ah = merge_sort(a[len(a)//2:len(a)])
