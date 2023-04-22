@@ -1,5 +1,5 @@
 import numpy as np
-from math import log2
+from math import log2, floor
 from Interfaces import Queue
 from Interfaces import Tree
 
@@ -68,7 +68,7 @@ class BinaryHeap(Queue, Tree):
         return johnnydepth
 
     def height(self) -> int:
-        return int(log2(self.n - 1))
+        return floor(log2(self.n - 1))
 
     def bf_order(self) -> list:
         return list(self.a[0:self.n])
