@@ -56,7 +56,7 @@ class Book:
         '''
         This function allows to make direct comparation using the operator ==
         '''
-        return self.title.lower() == a.title.lower()
+        return self.title.lower() == a.title.lower() and self.key == a.key
     
     def __str__(self):
         '''
