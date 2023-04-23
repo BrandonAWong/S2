@@ -77,10 +77,3 @@ def quick_sort(a: List, p=True):
         _quick_sort_r(a, 0, a.size() - 1)
     else:
         _quick_sort_f(a, 0, a.size() - 1)
-
-a= [-20, -17, -22, -10, 27, -2, 26, 8, 28, 28, 16, 30, 12]
-import ArrayList
-ab = ArrayList.ArrayList()
-for el in a:
-    ab.append(el)
-quick_sort(ab, 0)
