@@ -12,9 +12,11 @@ class Book:
         self.rank = int(rank)
         self.similar = similar
 
-    def check(self, a, otherone):
-        for index in range(min(len(a), len(otherone))):
-            if a[index] != otherone[index]:
+    def check(self, a):
+        no = self.title.lower()
+        noo = a.title.lower()
+        for index in range(min(len(no), len(noo))):
+            if no[index] != noo[index]:
                 return index
         return -1
 
@@ -23,46 +25,39 @@ class Book:
         This function allows to make direct comparation using the operator <
         '''
         # find when letters differ then compare those
-        no = self.title.lower()
-        noo = a.title.lower()
-        indo = self.check(no, noo)
-        return ord(no[indo]) < ord(noo[indo])
+        indo = self.check(a)
+        return ord(self.title[indo]) < ord(a.title[indo])
         #return self.rank < a.rank
 
     def __le__(self, a):
         '''
         This function allows to make a direct comparation using the operator <=
         '''
-        no = self.title.lower()
-        noo = a.title.lower()
-        indo = self.check(no, noo)
-        return ord(no[indo]) <= ord(noo[indo])
+        indo = self.check(a)
+        return ord(self.title[indo]) <= ord(a.title[indo])
 
 
     def __gt__(self, a):
         '''
         This function allows to make direct comparation using the operator >
         '''
-        no = self.title.lower()
-        noo = a.title.lower()
-        indo = self.check(no, noo)
-        return ord(no[indo]) > ord(noo[indo])
+        indo = self.check(a)
+        return ord(self.title[indo]) > ord(a.title[indo])
         #return self.rank > a.rank
     
     def __ge__(self, a):
         '''
         This function allows to make direct comparation using the operator >=
         '''
-        no = self.title.lower()
-        noo = a.title.lower()
-        indo = self.check(no, noo)
-        return ord(no[indo]) >= ord(noo[indo])
+        indo = self.check(a)
+        return ord(self.title[indo]) >= ord(a.title[indo])
     
     def __eq__(self, a):
         '''
         This function allows to make direct comparation using the operator ==
         '''
         return self.title.lower() == a.title.lower()
+    
     def __str__(self):
         '''
         function returns a string containting the book information
