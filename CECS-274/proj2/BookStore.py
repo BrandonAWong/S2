@@ -10,6 +10,7 @@ import BinaryHeap
 #import AdjacencyList
 import MaxQueue
 import time
+import algorithms
 
 
 class BookStore:
@@ -156,7 +157,7 @@ class BookStore:
         elif n < 0:     print('Invalid number of titles.')
         else:
             abcdefghijklmnopqrstuvwxyz = time.time()
-            if True:
+            if True: #if structure == '1':
                 BS = BinarySearchTree.BinarySearchTree()
                 for goo in self.bookCatalog:
                     if infix in goo.title:
@@ -182,3 +183,22 @@ class BookStore:
             else:   print('Invalid data structure.')
             yo0123456789101112231415161718192021 = time.time() - abcdefghijklmnopqrstuvwxyz
             print(f'Displayed bestsellers_with({infix}, {structure}, {n}) in {yo0123456789101112231415161718192021} seconds')
+
+    def sort_catalog(self, s):
+        yo = time.time()
+        if s == '1':
+            algorithms.merge_sort(self.bookCatalog)
+        elif s == '2':
+            algorithms.quick_sort(self.bookCatalog, 0)
+        elif s == '3':
+            algorithms.quick_sort(self.bookCatalog, 'ioujfdauhisdfijhdfs')
+        else:
+            print('Invalid algorithm')
+            return False
+        yoyo = time.time() - yo
+        print(f'Sorted {self.bookCatalog.size()} books in {yoyo} seconds')
+        return True
+        
+    def display_catalong(self, n):
+        for johnpork in range(int(n)):
+            print(self.bookCatalog.get(johnpork))
