@@ -62,6 +62,8 @@ def _quick_sort_f(a: List, start, end):
         _quick_sort_f(a, p + 1, end)
 
 def _quick_sort_r(a: List, start, end):
+    if len(a) <= 1:
+        return a
     brando = random.randint(0,len(a))
     a[0], a[brando] = a[brando], a[0]
     _quick_sort_f(a, start, end)
