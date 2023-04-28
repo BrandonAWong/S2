@@ -1,0 +1,115 @@
+4/19/23
+Mips Instruciton formats 
+1. R-Type
+1.1 add
+
+Mips is 32 bits (Insturctions are word-size which is 32 bits)
+Mips is a RISC with a small number of simple instructions.
+
+RISC : (Reduced Instruction Set Computer is a type of microprocessor architecture that utilizes a small, 
+highly-optimized set of instructions rather than the highly-specialized set of instructions)
+
+Hardware to decode and execute instrutcions can be simple, small, and fast
+
+Instruction Cycle
+1. Instruction fetch (IF)
+2. Instruction Decode (ID)
+3. Instruction Execution (EXE)
+4. Memory (MEM)
+5. Write Back (WB)
+
+Instruction format (Rtype)
+
+  6 bits   5b.  5b.  5b. 5 bits    6 bits
+| opcode | rs | rt | rd |shamt | function |
+|________________32 bits_________________|
+
+3 Types of Register operands
+rs, rt : source registers
+rd : destiniation register
+opcode : operational (O for all R-type instructions)
+Function : the function and opcode field tells the computer harware what operation to perform
+shamt : the shift amount for shift instructions, otherwise it's 0
+
+Example 1:
+    C = A + B
+    C: des | A: src1 | B: src2
+    A -> $t1
+    B -> $t2
+    C -> $t0
+
+    Translation to Mips assembly:
+    add $rd, $rs, $rt -> general form of add instrucion in Mips (first is destination, then followed by source1 and source2)
+    add $t0, $t1, $t2
+
+    Convert the mips assembly above to machine code
+
+    | 0 | 9 | 10 | 8 |0 | 20hex |
+    field values
+    Machine code:
+    0     9    10     8     0   20hex
+    000000 01001 01010 01000 00000 100000  
+    opcode  rs    rt    rd   shamt function
+
+Example 2: 
+    Assume: 
+        $t1 = 0x12398BC0
+        $t2 = 0x0092AFEC
+    after add instruction executed what is the result in $t0
+    is there an overflow?
+
+    R[$t1] = content within $t1
+
+    R[$t0] = R[$t1] + R[$t2]
+
+         111    
+    0x12398BC0
+   +0x0092AFEC
+   ------------
+    0x12CC5BAC
+
+    if a hexadecimal digit's most signfigicant hex degit is >= 8:
+        then number is negative
+    else:
+        it's poisitve
+
+    $t0 -> 0x12CC5BAC
+    no overflow, we are adding a positive and positve and getting a positive
+
+HW:
+    add $s0, $s1, $t2
+    assuming:
+    $s1 = 0xFF310971
+    $t2 = 0xFE110101
+
+    find the value for register $s0 after add instruction is executed
+    convert to machine code
+    was there an overflow
+
+
+
+
+
+4/19/23 (cont)
+Example 1:
+    and $t3, $t0, $t1
+    R[$t3] = R[$t0] & R[$t1]
+    find machine code 
+    what is the result for $t3 after and is executed 
+    assuming:
+        $t0 = 0x11012CDA
+        $t1 = 0x01298FFAB
+    
+    | opcode | rs | rt | rd | shamt | funct |
+
+    | 0 | 8 | 9 | 11 | 0 | 0x24 |
+
+    000000 01000 01001 01011 00000 100100
+
+    DIDNT FINISH ASK WILL
+
+Example 2:
+    or $s0, $s1, $s2
+    R = S | S #finish
+    find $s0 after or is executed
+    what is the machine code
