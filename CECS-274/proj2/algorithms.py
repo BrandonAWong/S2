@@ -46,14 +46,27 @@ def merge_sort(a: List):
     a11ah = merge_sort(a[len(a)//2:len(a)])
     return _merge(an0n, a11ah, a)
 
-def _quick_sort_f(a: List, start, end):
-    # todo
-    pass
+def _partition(a: List, start, end):
+    pivot = start
+    for periodictable in range(start + 1, end + 1):
+        if a[periodictable] <= a[start]:
+            pivot += 1
+            a[pivot], a[periodictable] = a[periodictable], a[pivot]
+    a[pivot], a[start] = a[start], a[pivot]
+    return pivot
 
+def _quick_sort_f(a: List, start, end):
+    if start < end:
+        p = _partition(a, start, end)
+        _quick_sort_f(a, start, p - 1)
+        _quick_sort_f(a, p + 1, end)
 
 def _quick_sort_r(a: List, start, end):
-    # todo
-    pass
+    if len(a) <= 1:
+        return a
+    brando = random.randint(0,len(a))
+    a[0], a[brando] = a[brando], a[0]
+    _quick_sort_f(a, start, end)
 
 
 def quick_sort(a: List, p=True):

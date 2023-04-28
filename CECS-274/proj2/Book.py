@@ -12,19 +12,52 @@ class Book:
         self.rank = int(rank)
         self.similar = similar
 
+    def check(self, a):
+        no = self.title.lower()
+        noo = a.title.lower()
+        for index in range(min(len(no), len(noo))):
+            if no[index] != noo[index]:
+                return index
+        return -1
+
     def __lt__(self, a):
         '''
         This function allows to make direct comparation using the operator <
         '''
-        return self.rank < a.rank
+        # find when letters differ then compare those
+        indo = self.check(a)
+        return ord(self.title[indo]) < ord(a.title[indo])
+        #return self.rank < a.rank
+
+    def __le__(self, a):
+        '''
+        This function allows to make a direct comparation using the operator <=
+        '''
+        indo = self.check(a)
+        return ord(self.title[indo]) <= ord(a.title[indo])
 
 
     def __gt__(self, a):
         '''
         This function allows to make direct comparation using the operator >
         '''
-        return self.rank > a.rank
-
+        indo = self.check(a)
+        return ord(self.title[indo]) > ord(a.title[indo])
+        #return self.rank > a.rank
+    
+    def __ge__(self, a):
+        '''
+        This function allows to make direct comparation using the operator >=
+        '''
+        indo = self.check(a)
+        return ord(self.title[indo]) >= ord(a.title[indo])
+    
+    def __eq__(self, a):
+        '''
+        This function allows to make direct comparation using the operator ==
+        '''
+        return self.title.lower() == a.title.lower() and self.key == a.key
+    
     def __str__(self):
         '''
         function returns a string containting the book information

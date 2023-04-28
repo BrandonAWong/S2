@@ -60,6 +60,8 @@ def menu_bookstore_system():
         7 Add a book by key to shopping cart
         8 Add a book by title prefix to shopping cart
         9 Search for best-sellers with infix
+        10 Sort the catalog
+        11 Display the first n books of catalog
         0 Return to main menu
         """)
         option = input()
@@ -94,6 +96,11 @@ def menu_bookstore_system():
             bookStore.bestsellers_with(input('Enter infix: '),
                                        input('Enter structure (1 or 2): '), 
                                        input('Enter max number of titles: '))
+        elif option == '10':
+            bookStore.sort_catalog(input('Choose an algorithm:\n\t1 - Merge Sort\n\t2 - Quick Sort (first element pivot)'
+                                         '\n\t3 - Quick Sort (random element pivot)\nYour selection: '))
+        elif option == '11':
+            bookStore.display_catalong(input('Enter the number of books to display: '))
             
         ''' 
         Add the menu options when needed
